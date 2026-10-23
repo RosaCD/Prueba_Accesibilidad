@@ -39,7 +39,7 @@ $(document).ready(function() {
   var lentils = $('<ul>').addClass('lentils');
   for (var i=0; i<slideCount; i++) {
     var slideNumber = i + 1;
-    var slideLabel = 'Slide ' + slideNumber;
+    var slideLabel = 'Diapositiva ' + slideNumber;
     var lentil = $('<li>');
     var lentilButton = $('<span>').attr({
       'role': 'button',
@@ -82,7 +82,7 @@ function showSlide(index) {
   // and update the live region so screen reader users know the slide has changed.
   var numSlides = $('#carousel div.slide').length;
   var slideNum = index + 1;
-  var msg = 'Now showing slide ' + slideNum + ' of ' + numSlides;
+  var msg = 'Se muestra la diapositiva ' + slideNum + ' de ' + numSlides;
   $('#slideStatus').text(msg);
 }
 

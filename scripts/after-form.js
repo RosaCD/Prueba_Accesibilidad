@@ -17,7 +17,7 @@ $(document).ready(function() {
   var captchaFieldset = $('<fieldset>'); 
   var captchaLegend = $('<legend>').attr({
     class: 'required'
-  }).text('Security Question ');
+  }).text('Pregunta de seguridad ');
   var captchaStar = $('<span>').attr({
     'class': 'star',
     'aria-hidden': 'true'
@@ -55,9 +55,9 @@ $(document).ready(function() {
       success = false; 
     }
     if (success) { 
-      $('title').text('Success! Accessible University');
-      feedbackHeading = $('<h3>').text('Thank you!');
-      feedbackMsg = 'Your application has been received.'
+      $('title').text('¡Éxito! Universidad Accesible');
+      feedbackHeading = $('<h3>').text('¡Gracias!');
+      feedbackMsg = 'Hemos recibido tu solicitud.'
       feedbackText = $('<p>').text(feedbackMsg);
       $('#feedback').empty().append(feedbackHeading,feedbackText).show();
       // Reset the form 
@@ -66,9 +66,9 @@ $(document).ready(function() {
       $('form input[type="checkbox"]').prop('checked',false);
     }
     else { 
-      $('title').text('Error with fom submission | Accessible University');
+      $('title').text('Error al enviar el formulario | Universidad Accesible');
       feedbackHeading = $('<h3>').text('Error');
-      feedbackMsg = 'Your answer to the security question was not correct. Please try again.';  
+      feedbackMsg = 'La respuesta a la pregunta de seguridad no es correcta. Inténtalo de nuevo.';
       feedbackText = $('<p>').text(feedbackMsg);
       $('#feedback').empty().append(feedbackHeading,feedbackText).show();
       // Empty the captcha field, but not the other fields
@@ -82,15 +82,15 @@ function getCaptchas() {
 
   let captchas = [
     { 
-      'question': 'If a cow is purple, what color is it?',
-      'answer': 'purple'
+      'question': 'Si una vaca es morada, ¿de qué color es?',
+      'answer': 'morada'
     },
     { 
-      'question': 'Sunday, cow, Friday. Which of these is not a day?',
-      'answer': 'cow'
+      'question': 'Domingo, vaca, viernes. ¿Cuál de estas opciones no es un día de la semana?',
+      'answer': 'vaca'
     },
     { 
-      'question': 'Cow, pizza, car. Which of these has more than three letters?',
+      'question': 'Vaca, pizza, auto. ¿Cuál de estas palabras tiene más de tres letras?',
       'answer': 'pizza'
     }
   ]
@@ -122,7 +122,7 @@ function checkRequiredFields() {
         skippedId = $(this).attr('id'); 
         skippedLabel = $('label[for=' + skippedId + ']').text().replace(' *',''); 
         result = { 
-          'error' : 'ERROR: ' + skippedLabel + ' is required.',
+          'error' : 'ERROR: El campo ' + skippedLabel + ' es obligatorio.',
           'fieldId' : skippedId
         }; 
         return false; // to break out of the each()  
