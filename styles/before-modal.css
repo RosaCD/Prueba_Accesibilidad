@@ -2,11 +2,12 @@
  * CSS for Accessible University Demo Site
  * http://uw.edu/accesscomputing/AU
  *
- * before-modal.css = Styles for inaccessible modal
+ * after-modal.css = Styles for accessible modal
  */
 
-#cheatSheetLinkSpan a {
-  cursor: pointer;
+button#openDialog { 
+	font-size: 1.05em;
+	margin: 0.5em 0 1em;
 }
 #modalMask {
   position: fixed;
@@ -22,39 +23,40 @@
 	display: none;
 }
 #modalContent {
-	position: fixed;
-  top: 100px;
-	left: 10px;
+	padding: 0; 
 	background-color: white;
-	border: 5px solid black;
-	padding: 0;
-	font-weight: normal;
-	text-align: left;
-	width: 400px;
-	opacity: 1;
-	z-index: 20;
-	display: none;
 }
-.modalHeading {
+h1#modalHeading {
 	background-color: #2A194C; 
 	color: white;
   font-size: 1.4em;
   font-weight: bold;
   text-align: center;
   margin: 0;
-	padding: 0.25em;	
+	padding: 0.25em;
 }
-#modalClose {
+#modalContent ol {
+  /* width: 30em; */
+  margin: 1em;
+	padding: 0 1em;
+	line-height: 1.5em;
+}
+#modalContent button:hover, 
+#modalContent button:focus { 
+	border: 2px solid skyblue;
+}
+button#modalClose {
   position: absolute;
   right: 5px;
   top: 5px;
-	font-weight: bold;	
+	font-weight: bold;
 }
-#modalOk {
+button#modalOk {
 	margin: 0 0.5em 1em;
 	font-weight: bold;
 	font-size: 1.1em;
 }
-#modalContent button {
-  outline: none;
+#modalContent::backdrop { 
+	background-color: black;
+	opacity: 0.75;
 }

@@ -29,11 +29,12 @@ $(document).ready(function() {
   // add slide indicators (lentils)
   var lentils = $('<ul>').addClass('lentils');
   for (var i=0; i<slideCount; i++) {
-    var lentil = $('<li>')
+    var lentil = $('<li>').append($('<button type="button">')
       .attr('data-slide',i)
+      .attr('aria-label','Show slide ' + (i + 1))
       .on('click',function() {
         showSlide($(this).data('slide'));
-      });
+      }));
     lentils.append(lentil);
   }
   $('#carousel').append(lentils);
@@ -65,8 +66,8 @@ function showSlide(index) {
   $('.slide').eq(index).addClass('current');
 
   // also update the slide indicator
-  $('.lentils li.active').removeClass('active');
-  $('.lentils li').eq(index).addClass('active');
+  $('.lentils button.active').removeClass('active').removeAttr('aria-current');
+  $('.lentils button').eq(index).addClass('active').attr('aria-current','true');
 
 }
 

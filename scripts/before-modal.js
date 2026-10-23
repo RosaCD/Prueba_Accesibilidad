@@ -2,44 +2,86 @@
  * JavaScript for Accessible University Demo Site
  * http://uw.edu/accesscomputing/AU
  *
- * before-modal.js = Inaccessible modal
+ * after-modal.js = Accessible Modal Dialog 
+ *
+ * This script handles basic functionalitty for showing and hiding the dialog in this example
+ * It's too simple for widespread use  
+ * 
+ * Resources: 
+ * 
+ * MDN HTML dialog element: 
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog
+ *
+ * W3C APG Dialog (Modal) pattern: 
+ * https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/ 
+ * 
  */
 
-$(document).ready(function(event) {
 
-  $('a[href="cheatsheet.html"]').on('click',function(event) {
-    showModal();
-    event.preventDefault();
-  });
+document.addEventListener("DOMContentLoaded", function(event) { 
 
-  // handle click on X or Ok button in modal dialog
-  $('#modalContent button').on('click',function () { 
-console.log('you clicked a button');     
-    hideModal();     
-  });
+    const dialogTrigger = document.getElementById('openDialog');
+    const auDialog = document.getElementById('modalContent');
+    const closeButton = document.getElementById('modalClose');
+    const okButton = document.getElementById('modalOk');
+    
+    // If a browser doesn't support the dialog, then hide the
+    // dialog contents by default.
+    if (typeof auDialog.showModal !== 'function') {
+      auDialog.hidden = true;
+      /* a fallback script to allow this dialog/form to function
+         for legacy browsers that do not support <dialog>
+        could be provided here.
+      */
+    }
+    // Handle click on the dialogTrigger button
+    dialogTrigger.addEventListener('click', () => {
+      if (typeof auDialog.showModal === "function") {
+        auDialog.showModal();
+        // trap keyboard focus within dialog 
+        // (browsers don't do this natively, as of Nov 2022)
+        document.addEventListener('keydown',trapTabKey); 
 
-  function showModal() {
+      } 
+      else {
+        console.log ("Sorry, the <dialog> API is not supported by this browser."); 
+      }
+    });
 
-    var winWidth = $(window).width();
-    var winHeight = $(window).height();
-    var modalSize = 400;
-    var modalLeft = ((winWidth-modalSize)/2) + 'px';
-    var modalTop = ((winHeight-modalSize)/2) + 'px';
+    // Handle click on the close & OK buttons 
+    closeButton.addEventListener('click',function() { 
+      auDialog.close();
+    });
+    okButton.addEventListener('click',function() { 
+      auDialog.close();
+    });
 
-    $('#modalContent')
-      .css({
-        'top': modalTop,
-        'left': modalLeft
-      })
-      .show();
+    // HTML dialog element has its own 'close' event 
+    auDialog.addEventListener('close', () => {
+      // remove tab event listener 
+      document.removeEventListener('keydown',trapTabKey); 
+    });
 
-    $('#modalMask').show();
-  }
+    function trapTabKey(e) {
+      
+      var key = e.key || e.keyCode || e.which; 
 
-  function hideModal() {
-
-    $('#modalContent').hide(); 
-    $('#modalMask').hide();
-  }
+      // if tab or shift-tab pressed
+      if (key === 'Tab' || key === 9) { 
+        e.preventDefault(); 
+        /* This is an extreme oversimplification 
+          since we know we only have two buttons. 
+          A more robus dialog would build an array of all focusable elements 
+          and move to the next or previous element in the array 
+          as user tabs or shift+tabs 
+        */ 
+        if (e.target === closeButton) { 
+          okButton.focus(); 
+        }
+        else if (e.target === okButton) { 
+          closeButton.focus(); 
+        }
+      }
+    };
 
 });

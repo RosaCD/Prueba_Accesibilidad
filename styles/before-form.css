@@ -14,16 +14,47 @@
 #appForm p.reqExample {
   margin-top: 0.15em;
 }
-div#majors {
-  width: 10em;
+label { 
+  font-size: 1em;
+  line-height: 1em;
+  margin-bottom: 0.25em;
+  display: block;
 }
-form div.major {
+
+
+form h2 {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+form input[type="email"] {
+  display: block;
+  width: 95%;
+}
+fieldset {
+  border: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+legend {
+  margin-left: 0;
+  font-weight: bold;
+}
+
+#majors ul {
+  list-style-type: none;
   display: block;
 	position: relative;
 	margin: 0;
+	padding-left: 1em;
 	width: 10em;
 }
-.major input {
+#majors ul li { 
+  line-height: 1.5em;
+}
+#majors ul label { 
+  display: inline;
+}
+#majors li input {
   float: right;
 	position: absolute;
 	right: 0;
@@ -31,11 +62,17 @@ form div.major {
 
 /*
  *
- * Uses color alone to indicate which fields are required
+ * Uses color and symbols to indicate which fields are required
  *
  */
 .required {
-  color: #39275B;
+  font-weight: bold;  
+}
+.required .star { 
+  color: #C00;
+  font-size: 2em;
+  display: inline-block;
+  vertical-align: middle; 
 }
 
 /*
@@ -63,15 +100,14 @@ form div.major {
  * Error Message in Form
  *
  */
-#error {
+#feedback {
   background-color: #FFC;
   font-weight: bold;
   padding: 0.75em;
   border: 1px solid #2A194C;
   display: none;
 }
-#errorHeading {
+#feedback h3 {
   font-size: 1.1em;
   font-weight: bold;
 }
-

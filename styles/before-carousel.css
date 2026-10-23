@@ -44,21 +44,21 @@
 #btn-prev,
 #btn-next {
   position: absolute;
-  width: 0; 
-  height: 0;
+  min-width: 44px;
+  min-height: 44px;
   z-index: 20;
-  top: 30%;  
+  top: 30%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
 }
 #btn-prev {
-  border-top: 40px solid transparent;
-  border-bottom: 40px solid transparent;   
-  border-right: 40px solid #E9E9ED;   
   left: 5px;
 }
 #btn-next {
-  border-top: 40px solid transparent;
-  border-bottom: 40px solid transparent;  
-  border-left: 40px solid #E9E9ED;
   right: 5px;
 }
 
@@ -73,21 +73,25 @@ ul.lentils {
 }
 .lentils li {
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin: 10px;
-  text-indent: 0;
-  cursor: pointer;
-  border: none;
-  border-radius: 50%;
-  background-color: #FFF;
-  box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);
+  margin: 0 4px;
 }
-.lentils li.active {
-  width: 20px;
-  height: 20px;
-  margin: 10px;
-  background-color: #FF9; /* yellow */
+.lentils button {
+  min-width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: #555;
+  cursor: pointer;
+}
+.lentils button.active {
+  background-color: #ff9;
+}
+#btn-prev:focus-visible,
+#btn-next:focus-visible,
+.lentils button:focus-visible {
+  outline: 3px solid #ff9;
+  outline-offset: 2px;
 }
 
 

@@ -94,3 +94,7 @@ label {
 }
 
 
+#submit {
+  min-width: 50px;
+  min-height: 30px;
+}
