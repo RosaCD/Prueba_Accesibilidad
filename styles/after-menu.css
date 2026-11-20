@@ -33,13 +33,13 @@ ul#menu {
 	font-size: 1em;
 	border: none;
 	color: #39275b; /* for WCAG 2.0 AAA conformance */
-	color: #5a667a; /* for WCAG 2.0 AA conformance */
+	
 }
 #menu li a {
 	padding: 0.25em 1em;
   display: block;
 	color: #39275b; /* for WCAG 2.0 AAA conformance */
-	color: #5a667a; /* for WCAG 2.0 AA conformance */
+
 	text-decoration: none;
 }
 #menu li ul {
@@ -67,7 +67,7 @@ ul#menu {
 		border-left: 0.5em solid transparent;
 		border-right: 0.5em solid transparent;
 		border-top: 0.5em solid #39275b; /* for WCAG 2.0 AAA conformance */	
-		border-top: 0.5em solid #5a667a; /* for WCAG 2.0 AA conformance */		
+		
 		top: 0.65em;
 		right: 0.5em;
 }
